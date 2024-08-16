@@ -1,7 +1,8 @@
-import {cart, addProduct, cartQuantity} from '../data/cart.js';
+import {cart, addProduct} from '../data/cart.js';
 import {products} from '../data/products.js';
 
 let html = '';
+export let cartQuantity = 0;
 
 products.forEach((product) => {
   html += `<div class="product-container">
@@ -55,6 +56,15 @@ products.forEach((product) => {
 });
 
 document.querySelector('.js-products-grid').innerHTML = html;
+
+cart.forEach((item) => {
+  cartQuantity += item.quantity;
+  console.log(item);
+});
+
+console.log(cartQuantity);
+
+document.querySelector(".js-cart-quantity").innerHTML = `${cartQuantity}`;
 
 document.querySelectorAll('.js-add-button').forEach((button) => {
   button.addEventListener('click', () => {
