@@ -43,3 +43,14 @@ export function removeProduct(productId) {
   cart.splice(matchIndex, 1);
   localStorage.setItem('cart', JSON.stringify(cart));
 }
+
+export function changeDeliveryOption(productId, optionId) {
+  let matchItem;
+  cart.forEach((item) => {
+    if (item.id === productId) {
+      matchItem = item;
+    }
+  });
+  matchItem.deliveryOptionId = `${optionId}`;
+  localStorage.setItem('cart', JSON.stringify(cart));
+}
